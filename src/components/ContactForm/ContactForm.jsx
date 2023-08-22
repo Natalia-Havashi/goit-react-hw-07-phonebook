@@ -1,13 +1,17 @@
 import { ContainerForm } from 'components/styled.styled';
+
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { addContact } from 'redux/Contacts/slice';
+import { useDispatch, useSelector } from 'react-redux';
+import { addContact } from 'redux/Contacts/actions';
+import { getContacts } from 'redux/Contacts/selector';
+
 
 const Contacts = () => {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
 
   const dispatch = useDispatch();
+  const contacts = useSelector(getContacts);
 
   const handleChange = e => {
     const { name, value } = e.target;
@@ -20,15 +24,19 @@ const Contacts = () => {
 
   const handleSubmit = e => {
     e.preventDefault();
+    const isContact = contacts.find(contact => contact.name === name);
+    if (isContact) {
+      alert(`${name} is already in contact`);
+    } else {
+      const data = {
+        name: name,
+        number: number,
+      };
+      dispatch(addContact(data));
 
-    const data = {
-      name: name,
-      number: number,
-    };
-    dispatch(addContact(data));
-
-    setName('');
-    setNumber('');
+      setName('');
+      setNumber('');
+    }
   };
 
   return (

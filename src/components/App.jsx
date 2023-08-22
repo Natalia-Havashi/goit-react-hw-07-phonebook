@@ -4,14 +4,14 @@ import Filter from './Filter/Filter';
 import { Container } from './styled.styled';
 import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
-import { fetchContacts } from 'redux/Contacts/slice';
+import { fetchContacts } from 'redux/Contacts/actions';
 
 const App = () => {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch()
 
-  useEffect(() => {
-    dispatch(fetchContacts())
-  }, [dispatch])
+  // useEffect(()=>{
+  //   dispatch(fetchContacts())
+  // },[dispatch])
   return (
     <Container>
       <h1>PhoneBook</h1>
