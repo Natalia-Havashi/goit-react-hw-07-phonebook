@@ -1,13 +1,11 @@
-
 import { useDispatch } from 'react-redux';
 import { deleteContact } from 'redux/Contacts/actions';
-
 
 export const Contact = ({ contact }) => {
   const dispatch = useDispatch();
   return (
     <li>
-      {contact.name} : {contact.number}
+      {contact.name} : {contact.phone}
       <button
         type="button"
         onClick={() => {
@@ -19,5 +17,3 @@ export const Contact = ({ contact }) => {
     </li>
   );
 };
-
-

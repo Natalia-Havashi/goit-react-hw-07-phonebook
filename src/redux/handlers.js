@@ -1,15 +1,15 @@
 export const handlePending = state => {
   state.isLoading = true;
-  state.error = '';
+  // state.error = '';
 };
 export const handleRejected = (state, { payload }) => {
   state.isLoading = false;
-  state.error = payload.error;
+  state.error = payload;
 };
 
 export const handleFulfilledGet = (state, { payload }) => {
   state.isLoading = false;
-  state.items = payload.contacts;
+  state.items = payload;
 };
 
 export const handleFulfilledAdd = (state, { payload }) => {
